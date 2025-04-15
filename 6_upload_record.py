@@ -21,23 +21,40 @@ session.headers.update({
 })
 
 xml_file = "example.xml"
+mef_file = "example.zip"
 
-# XML upload
-print("Début de l'upload...")
+# # XML upload
+# print("Start upload XML...")
+# try:
+#     with open(xml_file, 'rb') as f:
+#         response = session.post(
+#             "https://geocat-int.dev.bgdi.ch/geonetwork/srv/api/records",
+#             files={'file': (xml_file, f, 'text/xml')},
+#             params={
+#                 'metadataType': 'METADATA',
+#                 'uuidProcessing': 'GENERATEUUID',
+#                 'group': '3'
+#             }
+#         )
+#         # Response
+#         print(json.dumps(response.json(), indent=2))
+
+# MEF upload
+print("Start upload MEF...")
 try:
-    with open(xml_file, 'rb') as f:
+    with open(mef_file, 'rb') as f:
         response = session.post(
             "https://geocat-int.dev.bgdi.ch/geonetwork/srv/api/records",
-            files={'file': (xml_file, f, 'text/xml')},
+            files={'file': (mef_file, f, 'application/zip')},  # Type MIME modifié
             params={
                 'metadataType': 'METADATA',
                 'uuidProcessing': 'GENERATEUUID',
-                'group': '3'
+                'group': '3',
+                'transformWith': '_none_'  # Optionnel: désactive les transformations
             }
         )
-        # Response
         print(json.dumps(response.json(), indent=2))
             
 except Exception as e:
-    print("Erreur:", e)
+    print("Error:", e)
     print("Response content:", response.content)
