@@ -45,12 +45,11 @@ try:
     with open(mef_file, 'rb') as f:
         response = session.post(
             "https://geocat-int.dev.bgdi.ch/geonetwork/srv/api/records",
-            files={'file': (mef_file, f, 'application/zip')},  # Type MIME modifié
+            files={'file': (mef_file, f, 'application/zip')},
             params={
                 'metadataType': 'METADATA',
                 'uuidProcessing': 'GENERATEUUID',
                 'group': '3',
-                'transformWith': '_none_'  # Optionnel: désactive les transformations
             }
         )
         print(json.dumps(response.json(), indent=2))
