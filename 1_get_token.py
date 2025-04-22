@@ -43,18 +43,18 @@ else:
     print("Authentification error :", resp.status_code)
 
 
-# # En-têtes nécessaires
+# # Required headers
 # session.headers.update({
 #     "accept": "application/json",
 #     "Content-Type": "application/json"
 # })
 
-# # Effectuer la requête DELETE
+# # Perform the DELETE query
 # response = session.delete("https://geocat-int.dev.bgdi.ch/geonetwork/srv/api/records/6a7cdd66-ee4c-4e05-ac27-f808e160eba3")
 
-# # Vérification de la réponse
+# # Response verification
 # if response.status_code == 204:
-#     print("Enregistrement supprimé avec succès.")
+#     print("Record deleted successfully.")
 # else:
-#     print(f"Erreur lors de la suppression de l'enregistrement : {response.status_code}")
-#     print("Réponse du serveur :", response.text)
+#     print(f"Error deleting record : {response.status_code}")
+#     print("Server response:", response.text)
