@@ -17,6 +17,6 @@ response = requests.get(
 if response.status_code == 200:
     with open(f"{uuid}.xml", "wb") as f:
         f.write(response.content)
-    print(f"Fiche sauvegardée : {uuid}.xml")
+    print(f"Saved file : {uuid}.xml")
 else:
-    print(f"Erreur {response.status_code} : {response.text}")
+    print(f"Error {response.status_code} : {response.text}")

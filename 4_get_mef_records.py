@@ -17,6 +17,6 @@ response = requests.get(
 if response.status_code == 200:
     with open(f"{uuid}.zip", "wb") as f:
         f.write(response.content)
-    print(f"MEF sauvegardé : {uuid}.zip")
+    print(f"MEF Saved : {uuid}.zip")
 else:
-    print(f"Erreur {response.status_code} : {response.text}")
+    print(f"Error {response.status_code} : {response.text}")
