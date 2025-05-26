@@ -1,4 +1,4 @@
-# GeoCat API Usage Examples
+# geocat API Usage Examples
 
 This repository demonstrates 6 different ways to interact with the [geocat API](https://www.geocat.ch/geonetwork/doc/api/index.html) using Python scripts.
 
