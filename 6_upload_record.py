@@ -20,39 +20,42 @@ session.headers.update({
     "accept": "application/json"
 })
 
-xml_file = "example.xml"
+xml_file = "071c3a63-339b-4814-94fb-0bd6c6b97a01.xml"
 mef_file = "example.zip"
 
-# # XML upload
-# print("Start upload XML...")
-# try:
-#     with open(xml_file, 'rb') as f:
-#         response = session.post(
-#             "https://geocat-int.dev.bgdi.ch/geonetwork/srv/api/records",
-#             files={'file': (xml_file, f, 'text/xml')},
-#             params={
-#                 'metadataType': 'METADATA',
-#                 'uuidProcessing': 'GENERATEUUID',
-#                 'group': '3'
-#             }
-#         )
-#         # Response
-#         print(json.dumps(response.json(), indent=2))
-
-# MEF upload
-print("Start upload MEF...")
+# XML upload
+print("Start upload XML...")
 try:
-    with open(mef_file, 'rb') as f:
+    with open(xml_file, 'rb') as f:
         response = session.post(
             "https://geocat-int.dev.bgdi.ch/geonetwork/srv/api/records",
-            files={'file': (mef_file, f, 'application/zip')},
+            files={'file': (xml_file, f, 'text/xml')},
             params={
                 'metadataType': 'METADATA',
                 'uuidProcessing': 'GENERATEUUID',
                 'group': '3',
+                'rejectIfInvalid': 'true',
+                'publishToAll': 'true'
             }
         )
+        # Response
         print(json.dumps(response.json(), indent=2))
+
+# # MEF upload
+# print("Start upload MEF...")
+# try:
+#     with open(mef_file, 'rb') as f:
+#         response = session.post(
+#             "https://geocat-int.dev.bgdi.ch/geonetwork/srv/api/records",
+#             files={'file': (mef_file, f, 'application/zip')},
+#             params={
+#                 'metadataType': 'METADATA',
+#                 'uuidProcessing': 'GENERATEUUID',
+#                 'group': '3',
+#                 'assignToCatalog': 'true',
+#             }
+#         )
+#         print(json.dumps(response.json(), indent=2))
             
 except Exception as e:
     print("Error:", e)
