@@ -20,7 +20,7 @@ session.headers.update({
     "accept": "application/json"
 })
 
-xml_file = "071c3a63-339b-4814-94fb-0bd6c6b97a01.xml"
+xml_file = "example.xml"
 mef_file = "example.zip"
 
 # XML upload
